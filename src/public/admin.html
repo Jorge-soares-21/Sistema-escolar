@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOGIN -->
+    <div id="loginAdmin">
+        <h2>Login Admin</h2>
+        <input type="text" id="loginAdminInput" placeholder="Login">
+        <input type="password" id="senhaAdminInput" placeholder="Senha">
+        <button onclick="loginAdmin()">Entrar</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardAdmin" style="display: none;">
+
+        <div class="dashboard">
+
+            <!-- MENU LATERAL -->
+            <aside class="sidebar">
+                <h2>Admin</h2>
+
+                <button onclick="mostrarSecao('home')">🏠 Home</button>
+                <button onclick="mostrarSecao('aluno')">👨‍🎓 Aluno</button>
+                <button onclick="mostrarSecao('professor')">👨‍🏫 Professor</button>
+                <button onclick="mostrarSecao('recado')">📢 Recados</button>
+                <button onclick="mostrarSecao('disciplina')">📚 Disciplinas</button>
+
+            </aside>
+
+            <!-- CONTEÚDO -->
+            <main class="conteudo">
+
+                <header class="topo">
+                    <h2>Painel do Administrador</h2>
+                </header>
+
+                <!-- HOME -->
+                <section id="home" class="secao ativa">
+                    <div class="card">
+                        <h3>Bem-vindo ao sistema</h3>
+                        <p>Gerencie alunos, professores e recados.</p>
+                    </div>
+                </section>
+
+                <!-- CRIAR ALUNO -->
+                <section id="aluno" class="secao">
+
+                    <!-- AÇÕES -->
+                     <div class="card">
+                        <button onclick="mostrarCardastroAluno()">➕ Cadastrar Aluno</button>
+                     </div>
+
+                     <!-- FORM (ESCONDIDO) -->
+                    <div class="card" id="formAluno" style="display: none;">
+                        <h3>Criar Aluno</h3>
+
+                        <input id="nomeAlunoInput" placeholder="Nome">
+                        <input id="cpfAlunoInput" placeholder="CPF (somente números)">
+                        <input id="enderecoAlunoInput" placeholder="Endereço">
+                        <input type="date" id="data_nascimentoAlunoInput">
+                        <input type="tel" id="telefoneAlunoInput" placeholder="Telefone">
+
+                        <button onclick="criarAluno()">Criar</button>
+                        <button onclick="fecharCadastroAluno()">Cancelar</button>
+                    </div>
+
+                    <!-- LISTA -->
+                     <div class="card">
+                        <h3>Lista de Alunos</h3>
+
+                        <button onclick="buscarAlunos()">🔄 Atualizar</button>
+
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Status</th>
+                                    <th>Açôes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaAlunos"></tbody>
+                        </table>
+                     </div>
+
+                </section>
+
+                <!-- CRIAR PROFESSOR -->
+                <section id="professor" class="secao">
+
+                    <!-- AÇÕES -->
+                     <div class="card">
+                        <button onclick="mostrarCardastroProfessor()">➕ Cadastrar Professor</button>
+                     </div>
+
+                    <div class="card" id="formProfessor" style="display: none;">
+                        <h3>Criar Professor</h3>
+
+                        <input id="nomeProfessorInput" placeholder="Nome">
+                        <input id="cpfProfessorInput" placeholder="CPF (somente números)">
+                        <input id="enderecoProfessorInput" placeholder="Endereço">
+                        <input type="date" id="data_nascimentoProfessorInput">
+                        <input type="tel" id="telefoneProfessorInput" placeholder="Telefone">
+                        <input id="loginProfessorInput" placeholder="Login">
+                        <input type="password" id="senhaProfessorInput" placeholder="Senha">
+
+                        <button onclick="criarProfessor()">Criar</button>
+                        <button onclick="fecharCadastroProfessor()">Cancelar</button>
+                    </div>
+
+                    <!-- LISTA -->
+                     <div class="card">
+                        <h3>Lista de Professores</h3>
+
+                        <button onclick="buscarProfessores()">🔄 Atualizar</button>
+
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Status</th>
+                                    <th>Açôes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaProfessores"></tbody>
+                        </table>
+                     </div>
+
+                </section>
+
+                <!-- RECADOS -->
+                <section id="recado" class="secao">
+                    
+                    <div class="card">
+                        <h3>Criar Recado</h3>
+
+                        <input id="assuntoRecadoInput" placeholder="Título">
+                        <textarea id="mensagemRecadoInput" placeholder="Mensagem"></textarea>
+
+                        <button onclick="criarRecado()">Criar</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Recados Criados</h3>
+                        <div id="listaRecadosAdmin"></div>
+                    </div>
+
+                </section>
+
+                <section id="disciplina" class="secao">
+                    <div class="card">
+                        <button onclick="mostrarCardastroDisciplina()">➕ Cadastrar Discipina</button>
+                     </div>
+
+                     <div class="card" id="formDisciplina" style="display: none;">
+                        <h3>Criar Disciplina</h3>
+
+                        <input id="inputDisciplina" placeholder="Nome da Disciplina">
+                        <input type="number" id="cargaHorariaInput" placeholder="Carga Horaria">
+                        <button onclick="cadastrarDisciplina()">Cadastrar</button>
+                        <button onclick="fecharCadastroDisciplina()">Cancelar</button>
+                     </div>
+
+                     <!-- LISTA -->
+                     <div class="card">
+                        <h3>Lista de Disciplinas</h3>
+
+                        <button onclick="buscarDisciplinas()">🔄 Atualizar</button>
+
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Carga-Horaria</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaDisciplina"></tbody>
+                        </table>
+                     </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL -->
+    <div id="modalMatricula" class="modal">
+
+        <div class="modal-content">
+        <h3>Matricular Aluno</h3>
+
+        <label>Disciplina:</label>
+        <select id="selectDisciplina"></select>
+
+            <div style="margin-top: 15px;">
+                <button onclick="confirmarMatricula()">✅ Confirmar</button>
+                <button onclick="fecharModal()">❌ Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

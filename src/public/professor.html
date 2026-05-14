@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginProfessor">
+  <h2>Login Professor</h2>
+
+  <input id="loginProf" placeholder="Login">
+  <input type="password" id="senhaProf" placeholder="Senha">
+
+  <button id="btnLogin" onclick="loginProfessor()">Entrar</button>
+  <span id="loadingLogin" class="spinner" style="display: none;"></span>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboardProfessor" style="display:none;">
+
+  <div class="dashboard">
+
+    <!-- MENU -->
+    <aside class="sidebar">
+      <h2>Professor</h2>
+
+      <button onclick="mostrarSecao('home')">🏠 Home</button>
+      <button onclick="mostrarSecao('notas')">📝 Lançar Notas</button>
+      <button onclick="mostrarSecao('secaoNotas'); carregarNotas()">📊 Ver Notas</button>
+      <button onclick="logoutProfessor()">🚪 Sair</button>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
+
+      <header class="topo">
+        <h2 id="nomeProfessor">Bem-vindo</h2>
+      </header>
+
+      <!-- HOME -->
+      <section id="home" class="secao ativa">
+        <div class="card">
+          <h3>Área do Professor</h3>
+          <p>Lance notas dos alunos.</p>
+        </div>
+      </section>
+
+      <!-- LANÇAR NOTAS -->
+      <section id="notas" class="secao">
+        <div class="card">
+          <h3>Lançar Notas</h3>
+          <select id="filtroDisciplina" onchange="filtraPorDisciplina()">
+            <option value="">Todas as disciplinas</option>
+          </select>
+          <table border="1" width="100%">
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Disciplina</th>
+                <th>Prova</th>
+                <th>Trabalho</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+
+            <tbody id="tabelaProfessor"></tbody>
+          </table>
+
+        </div>
+      </section>
+
+      <!-- VER NOTAS -->
+      <section id="secaoNotas" class="secao">
+        <div class="card">
+          <h3>Notas Lançadas</h3>
+          <select id="filtroDisciplinaNotas" onchange="filtraNotasPorDisciplina()">
+            <option value="">Todas as disciplinas</option>
+          </select>
+          <table border="1" width="100%">
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Disciplina</th>
+                <th>Prova</th>
+                <th>Trabalho</th>
+                <th>Ações</th>
+
+              </tr>
+            </thead>
+
+            <tbody id="tabelaNotasProfessor"></tbody>
+          </table>
+
+        </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+<script src="professor.js"></script>
+</body>
+</html>

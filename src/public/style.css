@@ -1,0 +1,299 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0f172a;
+  color: white;
+}
+
+/* LOGIN */
+#loginAdmin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 10px;
+}
+
+#loginAdmin input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: none;
+}
+
+#loginAdmin button {
+  padding: 10px;
+  width: 250px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+#loginProfessor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 10px;
+}
+
+#loginProfessor input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: none;
+}
+
+#loginProfessor button {
+  padding: 10px;
+  width: 250px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+#loginAluno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 10px;
+}
+
+#loginAluno input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: none;
+}
+
+#loginAluno button {
+  padding: 10px;
+  width: 250px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+/* SPINNER */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 3px solid #ccc;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: girar 1s linear infinite;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* DASHBOARD */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background-color: #020617;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.sidebar button:hover {
+  background-color: #1e293b;
+}
+
+/* CONTEÚDO */
+.conteudo {
+  flex: 1;
+  padding: 20px;
+}
+
+/* TOPO */
+.topo {
+  margin-bottom: 20px;
+}
+
+/* SEÇÕES */
+.secao {
+  display: none;
+}
+
+.secao.ativa {
+  display: block;
+}
+
+/* CARDS */
+.card {
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* INPUTS */
+.card input,
+.card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* BOTÕES */
+.card button {
+  margin-top: 10px;
+  padding: 10px;
+  margin: 5px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card button:hover {
+  background-color: #2563eb;
+}
+
+/* LISTA DE RECADOS ADMIN */
+#listaRecadosAdmin div {
+  background-color: #0f172a;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100px;
+  }
+
+  .sidebar h2 {
+    font-size: 16px;
+  }
+
+  .sidebar button {
+    font-size: 12px;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #0f172a;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  color: #94a3b8;
+}
+
+td {
+  padding: 12px;
+}
+
+tr {
+  border-bottom: 1px solid #334155;
+}
+
+/* efeito visual */
+tr:hover {
+  background-color: #1e293b;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0,0,0,0.6);
+
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+/* MENSAGENS */
+.mensagem {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  padding: 12px 18px;
+  border-radius: 8px;
+
+  color: white;
+  font-weight: bold;
+
+  z-index: 1000;
+
+  min-width: 250px; 
+  max-width: 300px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.sucesso {
+  background-color: #22c55e;
+}
+
+.erro {
+  background-color: #ef4444;
+}

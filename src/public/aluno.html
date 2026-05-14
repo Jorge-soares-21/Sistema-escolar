@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aluno</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginAluno">
+  <h2>Login Aluno</h2>
+
+  <input id="matricula" placeholder="Matrícula">
+  <input type="password" id="senha" placeholder="Senha">
+
+  <button id="btnLogin" onclick="login()">Entrar</button>
+  <span id="loadingLogin" class="spinner" style="display: none;"></span>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" style="display:none;">
+
+  <div class="dashboard">
+
+    <!-- MENU -->
+    <aside class="sidebar">
+      <h2>Aluno</h2>
+
+      <button onclick="mostrarSecao('home')">🏠 Home</button>
+      <button onclick="mostrarSecao('recados')">📢 Recados</button>
+      <button onclick="mostrarSecao('notas')">📊 Notas</button>
+      <button onclick="logout()">🚪 Sair</button>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
+
+      <header class="topo">
+        <h2 id="nomeAluno">Bem-vindo</h2>
+        <p id="matricula"></p>
+      </header>
+
+      <!-- HOME -->
+      <section id="home" class="secao ativa">
+        <div class="card">
+          <h3>Área do Aluno</h3>
+          <p>Acompanhe suas notas e recados.</p>
+        </div>
+      </section>
+
+      <!-- RECADOS -->
+      <section id="recados" class="secao">
+        <div class="card">
+          <h3>Recados</h3>
+          <div id="listarRecados"></div>
+        </div>
+      </section>
+
+      <!-- NOTAS -->
+      <section id="notas" class="secao">
+        <div class="card">
+          <h3>Notas</h3>
+
+          <table border="1" width="100%">
+            <thead>
+              <tr>
+                <th>Disciplina</th>
+                <th>Prova</th>
+                <th>Trabalho</th>
+                <th>Média</th>
+                <th>Situação</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaNotas"></tbody>
+          </table>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+</div>
+
+<script src="aluno.js"></script>
+</body>
+</html>
