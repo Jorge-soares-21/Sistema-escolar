@@ -1,7 +1,8 @@
 const express = require("express");
+require("dotenv").config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Servindo ao front-end
 const path = require("path");
@@ -33,5 +34,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log("Servidor rodando na porta 3000")
+    console.log(`Servidor rodando na porta ${port}`)
 });
