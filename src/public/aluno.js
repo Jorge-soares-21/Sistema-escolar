@@ -1,6 +1,9 @@
 let token = "";
 let alunoId = null;
 
+const API_URL =  "https://sistema-escolar-bjw0.onrender.com";
+
+
 async function login() {
     const matricula = document.getElementById("matricula").value;
     const senha = document.getElementById("senha").value; 
@@ -13,7 +16,7 @@ async function login() {
     loading.style.display = "inline";
 
     try {
-      const resposta = await fetch("http://localhost:3000/alunos/login", {
+      const resposta = await fetch(`${API_URL}/alunos/login`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json"
@@ -53,7 +56,7 @@ async function login() {
 }
 
 async function buscarNotas() {
-  const resposta = await fetch(`http://localhost:3000/notas/aluno/${alunoId}`, {
+  const resposta = await fetch(`${API_URL}/notas/aluno/${alunoId}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -88,7 +91,7 @@ function logout() {
   // Função para buscar recados do aluno
   async function buscarRecados() {
       console.log("Buscando recados...");
-      const resposta = await fetch("http://localhost:3000/recados", {
+      const resposta = await fetch(`${API_URL}/recados`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -118,7 +121,7 @@ function logout() {
 
   // Função para marcar recado como lido.
   async function marcarComoLido(id) {
-    await fetch(`http://localhost:3000/recados/${id}/lido`, {
+    await fetch(`${API_URL}/recados/${id}/lido`, {
       method: "post", 
       headers: {
         Authorization: `Bearer ${token}`

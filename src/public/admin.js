@@ -1,11 +1,13 @@
 let tokenAdmin = "";
 let alunoSelecionado = null;
 
+const API_URL =  "https://sistema-escolar-bjw0.onrender.com";
+
 async function loginAdmin() {
     const login = document.getElementById("loginAdminInput").value;
     const senha = document.getElementById("senhaAdminInput").value;
 
-    const resposta = await fetch("http://localhost:3000/admin/login", {
+    const resposta = await fetch(`${API_URL}/admin/login`, {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -41,7 +43,7 @@ async function criarAluno() {
         return;
     }
 
-    const resposta =await fetch("http://localhost:3000/alunos", {
+    const resposta =await fetch(`${API_URL}/alunos`, {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -74,7 +76,7 @@ async function criarProfessor() {
         return;
     }
 
-    const resposta = await fetch("http://localhost:3000/professores", {
+    const resposta = await fetch(`${API_URL}/professores`, {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -96,7 +98,7 @@ async function criarRecado() {
     const titulo = document.getElementById("assuntoRecadoInput").value;
     const mensagem = document.getElementById("mensagemRecadoInput").value;
 
-    await fetch("http://localhost:3000/recados", {
+    await fetch(`${API_URL}/recados`, {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -110,7 +112,7 @@ async function criarRecado() {
 
 // função para listar recados.
 async function buscarRecadosAdmin() {
-  const resposta = await fetch("http://localhost:3000/recados", {
+  const resposta = await fetch(`${API_URL}/recados`, {
     headers: {
       Authorization: `Bearer ${tokenAdmin}`
     }
@@ -143,7 +145,7 @@ async function buscarRecadosAdmin() {
 
 // Função para deletar recado.
 async function deletarRecado(id) {
-    await fetch(`http://localhost:3000/recados/${id}`, {
+    await fetch(`${API_URL}/recados/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${tokenAdmin}`
@@ -173,7 +175,7 @@ function fecharCadastroAluno() {
 
 // Função para listar os alunos.
 async function buscarAlunos() {
-    const resposta = await fetch("http://localhost:3000/matriculas", {
+    const resposta = await fetch(`${API_URL}/matriculas`, {
         headers: {
                 Authorization: `Bearer ${tokenAdmin}`
         }
@@ -210,7 +212,7 @@ async function criarMatricula() {
     const id_aluno = document.getElementById("alunoIdInput").value;
     const id_disciplina = document.getElementById("disciplinaInput").value;
 
-    const resposta = await fetch("http://localhost:3000/matriculas", {
+    const resposta = await fetch(`${API_URL}/matriculas`, {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -238,7 +240,7 @@ function abrirMatricula(id) {
 
 // Buscar disciplinas (preencher o select).
 async function carregarDisciplinas() {
-    const resposta = await fetch("http://localhost:3000/disciplinas", {
+    const resposta = await fetch(`${API_URL}/disciplinas`, {
         headers: {
             Authorization: `Bearer ${tokenAdmin}`
         }
@@ -262,7 +264,7 @@ async function carregarDisciplinas() {
 async function confirmarMatricula() {
     const disciplinaId = document.getElementById("selectDisciplina").value;
 
-    const resposta = await fetch("http://localhost:3000/matriculas", {
+    const resposta = await fetch(`${API_URL}/matriculas`, {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -313,7 +315,7 @@ async function deletarAluno(id) {
 
     if (!confimar) return;
 
-    const resposta = await fetch(`http://localhost:3000/alunos/${id}`, {
+    const resposta = await fetch(`${API_URL}/alunos/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${tokenAdmin}`
@@ -341,7 +343,7 @@ function fecharCadastroProfessor() {
 
 // Função para listar os professores.
 async function buscarProfessores() {
-    const resposta = await fetch("http://localhost:3000/professores", {
+    const resposta = await fetch(`${API_URL}/professores`, {
         headers: {
                 Authorization: `Bearer ${tokenAdmin}`
         }
@@ -374,7 +376,7 @@ async function deletarProfessor(id) {
 
     if (!confimar) return;
 
-    const resposta = await fetch(`http://localhost:3000/professores/${id}`, {
+    const resposta = await fetch(`${API_URL}/professores/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${tokenAdmin}`
@@ -402,7 +404,7 @@ function fecharCadastroDisciplina() {
 
 // Função para listar Disciplinas.
 async function buscarDisciplinas() {
-    const resposta = await fetch("http://localhost:3000/disciplinas", {
+    const resposta = await fetch(`${API_URL}/disciplinas`, {
         headers: {
             Authorization: `Beaer ${tokenAdmin}`
         }
@@ -433,7 +435,7 @@ async function cadastrarDisciplina() {
     const nome = document.getElementById("inputDisciplina").value;
     const carga_horaria = document.getElementById("cargaHorariaInput").value;
 
-    await fetch("http://localhost:3000/disciplinas", {
+    await fetch(`${API_URL}/disciplinas`, {
         method: "POST",
         headers: {
             "content-type": "application/json",

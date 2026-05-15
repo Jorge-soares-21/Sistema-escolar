@@ -4,6 +4,9 @@ let todasMatriculas = []; // Variável global para armazenar todas as matrícula
 
 let todasNotas = []; // Variável global para armazenar todas as notas.
 
+const API_URL =  "https://sistema-escolar-bjw0.onrender.com";
+
+
 async function loginProfessor() {
     const login = document.getElementById("loginProf").value;
     const senha = document.getElementById("senhaProf").value; 
@@ -16,7 +19,7 @@ async function loginProfessor() {
     loading.style.display = "inline";
 
     try {
-        const resposta = await fetch("http://localhost:3000/professores/login", {
+        const resposta = await fetch(`${API_URL}/professores/login`, {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -49,7 +52,7 @@ async function loginProfessor() {
 };
 
 async function carregarMatriculas() {
-    const resposta = await fetch("http://localhost:3000/matriculas/professor", {
+    const resposta = await fetch(`${API_URL}/matriculas/professor`, {
         headers: {
             Authorization: `Bearer ${tokenProfessor}`
         }
@@ -117,7 +120,7 @@ async function lancarNota(id_matricula) {
     const valor_nota = document.getElementById(`nota_${id_matricula}`).value;
     const valor_trabalho = document.getElementById(`trab_${id_matricula}`).value;
 
-    const resposta = await fetch("http://localhost:3000/notas", {
+    const resposta = await fetch(`${API_URL}/notas`, {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -152,7 +155,7 @@ function logoutProfessor () {
 // Função para carregar as notas na seção de visualização.
 
 async function carregarNotas() {
-    const resposta = await fetch("http://localhost:3000/notas/professor", {
+    const resposta = await fetch(`${API_URL}/notas/professor`, {
         headers: {
             Authorization: `Bearer ${tokenProfessor}`
         }
@@ -221,7 +224,7 @@ async function salvarNota(id) {
     const valor_nota = document.getElementById(`nota${id}`).value;
     const valor_trabalho = document.getElementById(`trab${id}`).value;
 
-    const resposta = await fetch(`http://localhost:3000/notas/${id}`, {
+    const resposta = await fetch(`${API_URL}/notas/${id}`, {
         method: "PUT",
         headers: {
             "Content-type": "application/json",
